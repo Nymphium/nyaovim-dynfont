@@ -1,0 +1,21 @@
+<dom-module id="nyaovim-font">
+</dom-module>
+<script>
+	(function() {
+		const v = 'nyaovim-font:content';
+		const editor = document.querySelector('nyaovim-app').editor;
+		const client = editor.getClient();
+		client.on('notification', function(method, args) {
+			if (method === v) {
+				const size = args[0];
+
+				if (typeof size === "number" || typeof size === "string" && size.match(/[1-9]\d+/)) {
+					editor.screen.changeFontSize(size);
+					client.setVar("nyaovim_font_size", size);
+				}
+			}
+		});
+		client.subscribe(v);
+	})();
+</script>
+
