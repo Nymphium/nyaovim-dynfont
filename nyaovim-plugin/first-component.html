@@ -9,7 +9,7 @@
 			if (method === v) {
 				const size = args[0];
 
-				if (typeof size === "number" || typeof size === "string" && size.match(/[1-9]\d+/)) {
+				if (typeof size === "number" || typeof size === "string" && size.match(/^[1-9]\d+$/)) {
 					editor.screen.changeFontSize(size);
 					client.setVar("nyaovim_font_size", size);
 				}
@@ -18,4 +18,3 @@
 		client.subscribe(v);
 	})();
 </script>
-
